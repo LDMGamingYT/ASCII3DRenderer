@@ -6,7 +6,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 
 public class Renderer {
     private static final Logger LOG = LoggerContext.getContext().getLogger(Renderer.class);
@@ -51,5 +50,20 @@ public class Renderer {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+    
+    public static String renderScreen(Screen screen) {
+        StringBuilder result = new StringBuilder();
+        result.append("<html>");
+
+        for (int y = 0; y < screen.size().height; y++) {
+            for (int x = 0; x < screen.size().width; x++) {
+                result.append(getChar(screen.getBrightnessAt(x, y)));
+            }
+            result.append("<br>");
+        }
+
+        result.append("</html>");
+        return result.toString();
     }
 }

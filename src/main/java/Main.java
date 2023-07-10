@@ -1,26 +1,21 @@
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.LoggerContext;
 
-import java.io.File;
-import java.util.Random;
-import java.util.Scanner;
-
 public class Main {
     private static final Logger LOG = LoggerContext.getContext().getLogger(Main.class);
 
-    // fair warning: running this WILL lag your computer A LOT. it runs VERY unoptimized code to generate random
-    //               pixels. not my fault if your computer goes all like 🔥🔥🔥🔥💥💥💥 :)
     public static void main(String[] args) {
         UI.initialize();
-        UI.set("Awaiting path to image...");
+
+        Screen screen = new Screen(16, 16);
+        screen.drawPixel(3, 4, 1f);
+        screen.drawPixel(0, 4, 1f);
+        LOG.info(screen.toString());
 
         new Thread(() -> {
-            Scanner in = new Scanner(System.in);
-            System.out.print("Path to image?\n> ");
-            File image = new File(in.nextLine());
-            String renderedImage = Renderer.renderImage(image);
+            String render = Renderer.renderScreen(screen);
 
-            UI.set(renderedImage);
+            UI.set(render);
         }, "Render-Thread").start();
     }
 }
