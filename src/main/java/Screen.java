@@ -13,16 +13,6 @@ public class Screen {
 	public Screen(int width, int height) {
 		pixels = new HashMap<>();
 		size = new Dimension(width, height);
-		
-		LOG.info("Creating screen with size ({}, {})", size.width, size.height);
-
-		for (int y = 0; y < size.height; y++) {
-			for (int x = 0; x < size.width; x++) {
-				pixels.computeIfAbsent(x, k -> new HashMap<>());
-				pixels.get(x).put(y, 0f);
-				pixels.put(x, pixels.get(x));
-			}
-		}
 	}
 
 	public boolean drawPixel(int x, int y, float brightness) {
@@ -30,7 +20,7 @@ public class Screen {
 			LOG.warn("Pixel ({}, {}) is out of bounds ({}, {})", x, y, size.width, size.height);
 			return false;
 		}
-		//pixels.computeIfAbsent(x, k -> new HashMap<>());
+		pixels.computeIfAbsent(x, k -> new HashMap<>());
 		pixels.get(x).put(y, brightness);
 		return true;
 	}
