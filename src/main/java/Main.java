@@ -1,7 +1,9 @@
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.LoggerContext;
 
+import java.io.File;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
     private static final Logger LOG = LoggerContext.getContext().getLogger(Main.class);
@@ -10,13 +12,15 @@ public class Main {
     //               pixels. not my fault if your computer goes all like 🔥🔥🔥🔥💥💥💥 :)
     public static void main(String[] args) {
         UI.initialize();
+        UI.set("Awaiting path to image...");
 
         new Thread(() -> {
-            while (true) {
-                float r = new Random().nextFloat();
-                LOG.info("Rendering pixel with brightness {}", r);
-                UI.append(Renderer.getChar(r));
-            }
+            Scanner in = new Scanner(System.in);
+            System.out.print("Path to image?\n> ");
+            File image = new File(in.nextLine());
+            String renderedImage = Renderer.renderImage(image);
+
+            UI.set(renderedImage);
         }, "Render-Thread").start();
     }
 }
