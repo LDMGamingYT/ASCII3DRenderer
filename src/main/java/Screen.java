@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class Screen {
 	private static final Logger LOG = LoggerContext.getContext().getLogger(Screen.class);
-	private final Map<Integer, Map<Integer, Float>> pixels;
+	private final Map<Vector2, Float> pixels;
 	private final Dimension size;
 
 	public Screen(int width, int height) {
@@ -15,19 +15,17 @@ public class Screen {
 		size = new Dimension(width, height);
 	}
 
-	public boolean drawPixel(int x, int y, float brightness) {
-		if (x > size.width || y > size.height) {
-			LOG.warn("Pixel ({}, {}) is out of bounds ({}, {})", x, y, size.width, size.height);
+	public boolean drawPixel(Vector2 pos, float brightness) {
+		if (pos.x > size.width || pos.y > size.height) {
+			LOG.warn("Pixel ({}, {}) is out of bounds ({}, {})", pos.x, pos.y, size.width, size.height);
 			return false;
 		}
-		pixels.computeIfAbsent(x, k -> new HashMap<>());
-		pixels.get(x).put(y, brightness);
+		pixels.put(pos, brightness);
 		return true;
 	}
 
-	public float getBrightnessAt(int x, int y) {
-		if (pixels.get(x) == null) return 0f;
-		return pixels.get(x).get(y) == null ? 0f : pixels.get(x).get(y);
+	public float getBrightnessAt(Vector2 pos) {
+		return pixels.get(pos) == null ? 0f : pixels.get(pos);
 	}
 
 	@Override

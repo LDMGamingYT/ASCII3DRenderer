@@ -58,7 +58,7 @@ public class Renderer {
 
         for (int y = 0; y < screen.size().height; y++) {
             for (int x = 0; x < screen.size().width; x++) {
-                result.append(getChar(screen.getBrightnessAt(x, y)));
+                result.append(getChar(screen.getBrightnessAt(new Vector2(x, y))));
             }
             result.append("<br>");
         }

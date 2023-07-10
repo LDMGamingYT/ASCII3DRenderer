@@ -8,8 +8,8 @@ public class Main {
         UI.initialize();
 
         Screen screen = new Screen(16, 16);
-        screen.drawPixel(3, 4, 1f);
-        screen.drawPixel(0, 4, 1f);
+        screen.drawPixel(new Vector2(3, 4), 1f);
+        screen.drawPixel(new Vector2(0, 4), 1f);
         LOG.info(screen.toString());
 
         new Thread(() -> {
