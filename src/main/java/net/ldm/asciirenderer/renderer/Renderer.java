@@ -30,19 +30,16 @@ public class Renderer {
     }
 
     // Update is called every frame
-    public static void update(Screen screen) {
+    public static void update(Screen screen) throws InterruptedException {
+        int height = 5;
         screen.clear();
         try {
-            screen.drawPixel(new Vector2(frame, 5), new Pixel(1f));
-        } catch (PixelOutOfBoundsException ignored) {
-            frame = 0;
+            screen.drawVerticalLine(new Vector2(5, height), -height, new Pixel(1f));
+        } catch (PixelOutOfBoundsException e) {
+            throw new RuntimeException(e);
         }
         UI.set(renderScreen(screen));
         frame++;
-        try {
-            Thread.sleep(1000 / Main.FRAME_RATE);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Thread.sleep(1000 / Main.FRAME_RATE);
     }
 }

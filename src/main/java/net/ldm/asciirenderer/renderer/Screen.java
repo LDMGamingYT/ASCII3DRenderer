@@ -44,7 +44,7 @@ public class Screen {
 		for (int x = 0; x < size.width; x++) {
 			for (int y = 0; y < size.height; y++) {
 				try {
-					drawPixel(new Vector2(x, y), new Pixel(0f));
+					drawPixel(new Vector2(x, y), new Pixel(0.1f));
 				} catch (PixelOutOfBoundsException e) {
 					throw new RuntimeException(e);
 				}
