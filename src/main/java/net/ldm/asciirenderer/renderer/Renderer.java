@@ -14,7 +14,7 @@ public class Renderer {
             '&', '8', '%', 'B', '@'
     };
 
-    public static String renderScreen(Screen screen) {
+    private static String renderScreen(Screen screen) {
         StringBuilder result = new StringBuilder();
         result.append("<html>");
 
