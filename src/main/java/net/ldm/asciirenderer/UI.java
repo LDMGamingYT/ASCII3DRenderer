@@ -39,12 +39,4 @@ public class UI {
     public static void set(String text) {
         LABEL.setText(text);
     }
-
-    public static String get() {
-        return LABEL.getText();
-    }
-
-    public static void append(char c) {
-        set(get() + c);
-    }
 }

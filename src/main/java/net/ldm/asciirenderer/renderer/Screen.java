@@ -2,15 +2,12 @@ package net.ldm.asciirenderer.renderer;
 
 import net.ldm.asciirenderer.Vector2;
 import net.ldm.asciirenderer.core.exception.PixelOutOfBoundsException;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.LoggerContext;
 
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Screen {
-	private static final Logger LOG = LoggerContext.getContext().getLogger(Screen.class);
 	private final Map<Vector2, Pixel> pixels;
 	private final Dimension size;
 
@@ -24,10 +21,6 @@ public class Screen {
 			throw new PixelOutOfBoundsException(pos, size);
 		}
 		pixels.put(pos, pixel);
-	}
-
-	public float getBrightnessAt(Vector2 pos) {
-		return pixels.get(pos) == null ? 0f : pixels.get(pos).brightness;
 	}
 
 	public Pixel getPixelAt(Vector2 pos) {

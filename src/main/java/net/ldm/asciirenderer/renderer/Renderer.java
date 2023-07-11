@@ -1,8 +1,6 @@
 package net.ldm.asciirenderer.renderer;
 
 import net.ldm.asciirenderer.Vector2;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.LoggerContext;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -17,8 +15,6 @@ public class Renderer {
             '&', '8', '%', 'B', '@'
     };
 
-    private static final Logger LOG = LoggerContext.getContext().getLogger(Renderer.class);
-    
     public static String renderScreen(Screen screen) {
         StringBuilder result = new StringBuilder();
         result.append("<html>");
@@ -34,6 +30,7 @@ public class Renderer {
         return result.toString();
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     public static void renderScreenToFile(Screen screen) {
         StringBuilder result = new StringBuilder();
 
@@ -46,6 +43,7 @@ public class Renderer {
 
         File out = new File("out/screen.txt");
         try (FileWriter writer = new FileWriter(out)) {
+            out.getParentFile().mkdirs();
             out.createNewFile();
 
             writer.write(
@@ -57,12 +55,5 @@ public class Renderer {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public char getChar(float brightness) {
-        int index = (int) (brightness * (Renderer.BRIGHTNESS_SCALE.length - 1));
-        if (index < 0) index = 0;
-        else if (index >= Renderer.BRIGHTNESS_SCALE.length) index = Renderer.BRIGHTNESS_SCALE.length - 1;
-        return Renderer.BRIGHTNESS_SCALE[index];
     }
 }
