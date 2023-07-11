@@ -33,7 +33,7 @@ public class Pixel {
 
     @Override
     public String toString() {
-        return "Pixel(" +
+        return "(" +
                 brightness + "b" +
                 ')';
     }
