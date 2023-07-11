@@ -19,7 +19,7 @@ public class Main {
         if (renderToFile) LOG.info("Skipping UI initialization (file render only)");
 
         // TODO: 2023-07-11 Make sure this works on all resolutions.
-        //                  last tested with net.ldm.asciirenderer.renderer.Screen size is 1536x864, setting window size to 768x432
+        //                  last tested with Screen size is 1536x864, setting window size to 768x432
         Screen screen = new Screen(64, 16);
         for (int x = 0; x < screen.size().width; x++) {
             for (int y = 0; y < screen.size().height; y++) {
@@ -27,7 +27,6 @@ public class Main {
             }
         }
         screen.drawVerticalLine(new Vector2(3, 5), -3, new Pixel(1f));
-        LOG.info(screen.toString());
 
         new Thread(() -> {
             if (!renderToFile) {

@@ -7,7 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Renderer {
-    // TODO: 2023-07-09 Use a better brightness scale that uses those squares so it looks more solid
     protected static final char[] BRIGHTNESS_SCALE = {
             ' ', '\'', '.', '`', '^', '"', ',', ':', ';', 'I', 'l', '!', 'i', '>', '<', '~', '+', '_', '-', '?', ']',
             '[', '}', '{', '1', ')', '(', '|', '\\', '/', 't', 'f', 'j', 'r', 'x', 'n', 'u', 'v', 'c', 'z', 'X', 'Y',
