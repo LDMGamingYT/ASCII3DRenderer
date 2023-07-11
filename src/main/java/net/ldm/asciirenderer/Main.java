@@ -1,5 +1,6 @@
 package net.ldm.asciirenderer;
 
+import net.ldm.asciirenderer.core.exception.PixelOutOfBoundsException;
 import net.ldm.asciirenderer.renderer.Pixel;
 import net.ldm.asciirenderer.renderer.Renderer;
 import net.ldm.asciirenderer.renderer.Screen;
@@ -11,7 +12,7 @@ import java.util.Arrays;
 public class Main {
     private static final Logger LOG = LoggerContext.getContext().getLogger(Main.class);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws PixelOutOfBoundsException {
         boolean renderToFile = Arrays.asList(args).contains("--rendertofile");
 
         if (!renderToFile) UI.initialize();

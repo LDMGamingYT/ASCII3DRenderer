@@ -1,11 +1,11 @@
 package net.ldm.asciirenderer.core.exception;
 
-import net.ldm.asciirenderer.renderer.Pixel;
+import net.ldm.asciirenderer.Vector2;
 
-import java.awt.*;
+import java.awt.Dimension;
 
 public class PixelOutOfBoundsException extends Exception {
-    public PixelOutOfBoundsException(Pixel pixel, Dimension bounds) {
-        //super(String.format("Pixel (%s, %s) is out of bounds (%s, %s)", pixel.))
+    public PixelOutOfBoundsException(Vector2 pos, Dimension bounds) {
+        super(String.format("Pixel (%s, %s) is out of bounds (%s, %s)", pos.x, pos.y, bounds.width, bounds.height));
     }
 }
