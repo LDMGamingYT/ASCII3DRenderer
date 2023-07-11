@@ -5,10 +5,6 @@ import net.ldm.asciirenderer.UI;
 import net.ldm.asciirenderer.Vector2;
 import net.ldm.asciirenderer.core.exception.PixelOutOfBoundsException;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-
 public class Renderer {
     private static int frame = 0;
     protected static final char[] BRIGHTNESS_SCALE = {
@@ -31,33 +27,6 @@ public class Renderer {
 
         result.append("</html>");
         return result.toString();
-    }
-
-    @SuppressWarnings("ResultOfMethodCallIgnored")
-    public static void renderScreenToFile(Screen screen) {
-        StringBuilder result = new StringBuilder();
-
-        for (int y = 0; y < screen.size().height; y++) {
-            for (int x = 0; x < screen.size().width; x++) {
-                result.append(screen.getPixelAt(new Vector2(x, y)).toAscii());
-            }
-            result.append('\n');
-        }
-
-        File out = new File("out/screen.txt");
-        try (FileWriter writer = new FileWriter(out)) {
-            out.getParentFile().mkdirs();
-            out.createNewFile();
-
-            writer.write(
-                    result +
-                            "-".repeat(Math.max(0, screen.size().width)) +
-                            "\nOutput of rendered screen with size " +
-                            "(" + screen.size().width + ", " + screen.size().height + ")"
-            );
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     // Update is called every frame
