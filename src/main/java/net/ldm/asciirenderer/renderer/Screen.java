@@ -38,6 +38,10 @@ public class Screen {
 				drawPixel(new Vector2(origin.x, y), pixels);
 	}
 
+	public void clear() {
+		pixels.clear();
+	}
+
 	public Pixel getPixelAt(Vector2 pos) {
 		return pixels.get(pos) == null ? new Pixel() : pixels.get(pos);
 	}
