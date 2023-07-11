@@ -21,8 +21,6 @@ public class Main {
         //                  last tested with Screen size is 1536x864, setting window size to 768x432
         Screen screen = new Screen(64, 16);
 
-        //screen.drawVerticalLine(new Vector2(3, 5), -3, new Pixel(1f));
-
         new Thread(() -> {
             if (!renderToFile) {
                 while (true) Renderer.update(screen);
