@@ -13,7 +13,7 @@ public class Screen {
 
 	public Screen(int width, int height) {
 		pixels = new HashMap<>();
-		size = new Dimension(width, height);
+		size = new Dimension(width/2, height/2);
 		clear();
 	}
 

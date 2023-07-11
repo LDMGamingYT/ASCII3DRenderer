@@ -18,8 +18,8 @@ public class Renderer {
         StringBuilder result = new StringBuilder();
         result.append("<html>");
 
-        for (int y = 0; y < screen.size().height; y++) {
-            for (int x = 0; x < screen.size().width; x++) {
+        for (int y = -screen.size().height; y < screen.size().height; y++) {
+            for (int x = -screen.size().width; x < screen.size().width; x++) {
                 result.append(screen.getPixelAt(new Vector2(x, y)).toAscii());
             }
             result.append("<br>");
