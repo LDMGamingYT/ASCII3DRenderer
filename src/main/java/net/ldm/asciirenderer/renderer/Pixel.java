@@ -1,3 +1,5 @@
+package net.ldm.asciirenderer.renderer;
+
 import java.util.Objects;
 
 public class Pixel {

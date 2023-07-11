@@ -1,3 +1,5 @@
+package net.ldm.asciirenderer;
+
 import java.util.Objects;
 
 public class Vector2 {

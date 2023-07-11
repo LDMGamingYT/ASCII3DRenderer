@@ -1,3 +1,6 @@
+package net.ldm.asciirenderer.renderer;
+
+import net.ldm.asciirenderer.Vector2;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.LoggerContext;
 
