@@ -14,6 +14,7 @@ public class Screen {
 	public Screen(int width, int height) {
 		pixels = new HashMap<>();
 		size = new Dimension(width, height);
+		clear();
 	}
 
 	public boolean isOutOfBounds(Vector2 pos) {
@@ -40,6 +41,15 @@ public class Screen {
 
 	public void clear() {
 		pixels.clear();
+		for (int x = 0; x < size.width; x++) {
+			for (int y = 0; y < size.height; y++) {
+				try {
+					drawPixel(new Vector2(x, y), new Pixel(0f));
+				} catch (PixelOutOfBoundsException e) {
+					throw new RuntimeException(e);
+				}
+			}
+		}
 	}
 
 	public Pixel getPixelAt(Vector2 pos) {
