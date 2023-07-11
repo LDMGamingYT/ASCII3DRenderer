@@ -23,9 +23,10 @@ public class Main {
         Screen screen = new Screen(64, 16);
         for (int x = 0; x < screen.size().width; x++) {
             for (int y = 0; y < screen.size().height; y++) {
-                screen.drawPixel(new Vector2(x, y), new Pixel(1f));
+                screen.drawPixel(new Vector2(x, y), new Pixel(0.1f));
             }
         }
+        screen.drawVerticalLine(new Vector2(3, 5), -3, new Pixel(1f));
         LOG.info(screen.toString());
 
         new Thread(() -> {

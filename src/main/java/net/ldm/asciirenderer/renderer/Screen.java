@@ -16,11 +16,26 @@ public class Screen {
 		size = new Dimension(width, height);
 	}
 
+	public boolean isOutOfBounds(Vector2 pos) {
+		return pos.x > size.width || pos.y > size.height;
+	}
+
 	public void drawPixel(Vector2 pos, Pixel pixel) throws PixelOutOfBoundsException {
-		if (pos.x > size.width || pos.y > size.height) {
-			throw new PixelOutOfBoundsException(pos, size);
-		}
+		if (isOutOfBounds(pos)) throw new PixelOutOfBoundsException(pos, size);
 		pixels.put(pos, pixel);
+	}
+
+	public void drawVerticalLine(Vector2 origin, int distance, Pixel pixels) throws PixelOutOfBoundsException {
+		if (isOutOfBounds(origin)) throw new PixelOutOfBoundsException(origin, size);
+		Vector2 endPoint = new Vector2(origin.x, origin.y+distance);
+		if (isOutOfBounds(endPoint)) throw new PixelOutOfBoundsException(endPoint, size);
+
+		if (distance > 0)
+			for (int y = origin.y; y < origin.y + distance; y++)
+				drawPixel(new Vector2(origin.x, y), pixels);
+		else
+			for (int y = origin.y; y > origin.y + distance; y--)
+				drawPixel(new Vector2(origin.x, y), pixels);
 	}
 
 	public Pixel getPixelAt(Vector2 pos) {
