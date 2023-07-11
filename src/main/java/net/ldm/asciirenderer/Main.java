@@ -1,7 +1,5 @@
 package net.ldm.asciirenderer;
 
-import net.ldm.asciirenderer.core.exception.PixelOutOfBoundsException;
-import net.ldm.asciirenderer.renderer.Pixel;
 import net.ldm.asciirenderer.renderer.Renderer;
 import net.ldm.asciirenderer.renderer.Screen;
 import org.apache.logging.log4j.Logger;
@@ -11,8 +9,9 @@ import java.util.Arrays;
 
 public class Main {
     private static final Logger LOG = LoggerContext.getContext().getLogger(Main.class);
+    public static final int FRAME_RATE = 60;
 
-    public static void main(String[] args) throws PixelOutOfBoundsException {
+    public static void main(String[] args) {
         boolean renderToFile = Arrays.asList(args).contains("--rendertofile");
 
         if (!renderToFile) UI.initialize();
@@ -21,21 +20,15 @@ public class Main {
         // TODO: 2023-07-11 Make sure this works on all resolutions.
         //                  last tested with Screen size is 1536x864, setting window size to 768x432
         Screen screen = new Screen(64, 16);
-        for (int x = 0; x < screen.size().width; x++) {
-            for (int y = 0; y < screen.size().height; y++) {
-                screen.drawPixel(new Vector2(x, y), new Pixel(0.1f));
-            }
-        }
-        screen.drawVerticalLine(new Vector2(3, 5), -3, new Pixel(1f));
+
+        //screen.drawVerticalLine(new Vector2(3, 5), -3, new Pixel(1f));
 
         new Thread(() -> {
             if (!renderToFile) {
-                String render = Renderer.renderScreen(screen);
-                UI.set(render);
-                LOG.info("Screen has been rendered to UI");
+                while (true) Renderer.update(screen);
             } else {
                 Renderer.renderScreenToFile(screen);
-                LOG.info("Screen has been rendered to file.");
+                LOG.info("Frame 1 of screen has been rendered to file.");
             }
         }, "Render-Thread").start();
     }
