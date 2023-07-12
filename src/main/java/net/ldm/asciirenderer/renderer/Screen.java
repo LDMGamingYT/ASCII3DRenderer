@@ -13,7 +13,7 @@ public class Screen {
 
 	public Screen(int width, int height) {
 		pixels = new HashMap<>();
-		size = new Dimension(width/2, height/2);
+		size = new Dimension(width / 2, height / 2);
 		clear();
 	}
 
@@ -28,7 +28,7 @@ public class Screen {
 
 	public void drawVerticalLine(Vector2 origin, int distance, Pixel pixels) throws PixelOutOfBoundsException {
 		if (isOutOfBounds(origin)) throw new PixelOutOfBoundsException(origin, size);
-		Vector2 endPoint = new Vector2(origin.x, origin.y+distance);
+		Vector2 endPoint = new Vector2(origin.x, origin.y + distance);
 		if (isOutOfBounds(endPoint)) throw new PixelOutOfBoundsException(endPoint, size);
 
 		if (distance > 0)
@@ -42,7 +42,7 @@ public class Screen {
 	public void clear() {
 		pixels.clear();
 		for (int x = -size.width; x < size.width; x++) {
-			for (int y = -size.height; y < size.height; y++) {
+			for (int y = -size.height; y < size.height + 1; y++) {
 				try {
 					drawPixel(new Vector2(x, y), new Pixel(0.1f));
 				} catch (PixelOutOfBoundsException e) {
