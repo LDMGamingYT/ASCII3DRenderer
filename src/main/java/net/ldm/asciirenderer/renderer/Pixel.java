@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Pixel {
     public final float brightness;
+    public static final Pixel FULL = new Pixel(1f);
 
     public Pixel(float brightness) {
         this.brightness = brightness;

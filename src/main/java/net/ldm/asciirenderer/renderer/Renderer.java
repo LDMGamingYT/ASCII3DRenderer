@@ -36,8 +36,8 @@ public class Renderer {
     public static void update(Screen screen) throws InterruptedException {
         screen.clear();
         try {
-            screen.drawPixel(new Vector2(-5, -5), new Pixel(1f));
-            screen.drawVerticalLine(new Vector2(0, 5), -10, new Pixel(1f));
+            screen.drawPixel(new Vector2(-5, -5), Pixel.FULL);
+            screen.drawVerticalLine(new Vector2(0, 5), -10, Pixel.FULL);
         } catch (PixelOutOfBoundsException e) {
             throw new RuntimeException(e);
         }
