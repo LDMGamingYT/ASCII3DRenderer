@@ -4,11 +4,8 @@ import net.ldm.asciirenderer.Main;
 import net.ldm.asciirenderer.UI;
 import net.ldm.asciirenderer.Vector2;
 import net.ldm.asciirenderer.core.exception.PixelOutOfBoundsException;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.LoggerContext;
 
 public class Renderer {
-    private static final Logger LOG = LoggerContext.getContext().getLogger(Renderer.class);
     private static int frame = 0;
     protected static final char[] BRIGHTNESS_SCALE = {
             '\u00a0', '\'', '.', '`', '^', '"', ',', ':', ';', 'I', 'l', '!', 'i', '>', '<', '~', '+', '_', '-', '?', ']',
@@ -36,8 +33,10 @@ public class Renderer {
     public static void update(Screen screen) throws InterruptedException {
         screen.clear();
         try {
-            screen.drawPixel(new Vector2(-5, -5), Pixel.FULL);
-            screen.drawVerticalLine(new Vector2(0, 5), -10, Pixel.FULL);
+            for (int x = -screen.size().width; x < screen.size().width; x++) {
+                screen.drawVerticalLine(new Vector2(x, x/4), -(x/4 *2), Pixel.FULL);
+            }
+
         } catch (PixelOutOfBoundsException e) {
             throw new RuntimeException(e);
         }
