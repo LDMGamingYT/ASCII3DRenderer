@@ -5,6 +5,8 @@ import net.ldm.asciirenderer.renderer.Screen;
 
 public class Main {
     public static final int FRAME_RATE = 60;
+    public static final int RESOLUTION = 4;
+    public static final int FOV = 60;
 
     public static void main(String[] args) {
         UI.initialize();
