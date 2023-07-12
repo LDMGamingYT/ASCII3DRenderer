@@ -14,13 +14,18 @@ public class Main {
         Screen screen = new Screen(64, 16);
 
         new Thread(() -> {
-            while (true) {
+            try {
+                Renderer.update(screen);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            /*while (true) {
                 try {
                     Renderer.update(screen);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-            }
+            }*/
         }, "Render-Thread").start();
     }
 }
