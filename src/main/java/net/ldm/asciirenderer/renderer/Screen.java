@@ -18,7 +18,7 @@ public class Screen {
 	}
 
 	public boolean isOutOfBounds(Vector2 pos) {
-		return pos.x > size.width || pos.y > size.height;
+		return pos.x > size.width || pos.y > size.height || pos.x < -size.width || pos.y < -size.height;
 	}
 
 	public void drawPixel(Vector2 pos, Pixel pixel) throws PixelOutOfBoundsException {
