@@ -11,6 +11,16 @@ public class Vector2 {
 		this.y = y;
 	}
 
+	/**
+	 * Moves this Vector, does NOT set position
+	 * @param x Distance to travel on x-axis
+	 * @param y Distance to travel on y-axis
+	 */
+	public void move(int x, int y) {
+		this.x += x;
+		this.y += y;
+	}
+
 	@Override
 	public String toString() {
 		return "(" + x + ", " + y + ')';
