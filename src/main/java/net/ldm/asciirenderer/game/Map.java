@@ -1,11 +1,16 @@
 package net.ldm.asciirenderer.game;
 
-/**
- * Contains all maps.
- * Maps must be a 2D Integer array that is 11x11
- */
-public class Map {
-	public static final int[][] MAP = {
+import java.util.Arrays;
+
+public record Map(int[][] layout) {
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		Arrays.stream(layout).forEach(array -> builder.append(Arrays.toString(array)).append('\n'));
+		return builder.toString();
+	}
+
+	public static final Map MAP = new Map(new int[][]{
 			{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -17,5 +22,5 @@ public class Map {
 			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 			{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
-	};
+	});
 }
