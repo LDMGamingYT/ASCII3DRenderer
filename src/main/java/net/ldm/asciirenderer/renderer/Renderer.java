@@ -2,7 +2,7 @@ package net.ldm.asciirenderer.renderer;
 
 import net.ldm.asciirenderer.Main;
 import net.ldm.asciirenderer.UI;
-import net.ldm.asciirenderer.Vector2;
+import net.ldm.asciirenderer.core.Vector2;
 import net.ldm.asciirenderer.core.exception.PixelOutOfBoundsException;
 
 public class Renderer {

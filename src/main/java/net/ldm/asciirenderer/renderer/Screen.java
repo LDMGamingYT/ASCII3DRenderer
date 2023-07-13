@@ -1,6 +1,6 @@
 package net.ldm.asciirenderer.renderer;
 
-import net.ldm.asciirenderer.Vector2;
+import net.ldm.asciirenderer.core.Vector2;
 import net.ldm.asciirenderer.core.exception.PixelOutOfBoundsException;
 
 import java.awt.*;

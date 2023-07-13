@@ -1,4 +1,4 @@
-package net.ldm.asciirenderer;
+package net.ldm.asciirenderer.core;
 
 import java.util.Objects;
 
