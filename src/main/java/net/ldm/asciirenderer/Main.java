@@ -12,7 +12,7 @@ public class Main {
 
         // TODO: 2023-07-11 Make sure this works on all resolutions.
         //                  last tested with Screen size is 1536x864, setting window size to 768x432
-        Screen screen = new Screen(64, 16);
+        Screen screen = new Screen(136, 32);
 
         new Thread(() -> {
             try {
