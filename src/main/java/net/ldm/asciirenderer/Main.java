@@ -3,9 +3,10 @@ package net.ldm.asciirenderer;
 import net.ldm.asciirenderer.renderer.Renderer;
 import net.ldm.asciirenderer.renderer.Screen;
 
+import java.io.IOException;
+
 public class Main {
-    public static final int FRAME_RATE = 60;
-    public static final int FOV = 60;
+    public static final int FRAME_RATE = 1;
 
     public static void main(String[] args) {
         UI.initialize();
@@ -13,13 +14,18 @@ public class Main {
         Screen screen = new Screen(136, 32);
 
         new Thread(() -> {
-            while (true) {
+            /*while (true) {
                 try {
                     Renderer.update(screen);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
+            }*/
+            try {
+                Renderer.update(screen);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
-        }, "Render-Thread").start();
+        }, "Render thread").start();
     }
 }

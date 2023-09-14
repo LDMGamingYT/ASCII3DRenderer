@@ -13,12 +13,12 @@ public class Vector2 {
 
 	/**
 	 * Moves this Vector, does NOT set position
-	 * @param x Distance to travel on x-axis
-	 * @param y Distance to travel on y-axis
+	 * @param dx Distance to travel on x-axis
+	 * @param dy Distance to travel on y-axis
 	 */
-	public void move(int x, int y) {
-		this.x += x;
-		this.y += y;
+	public void move(int dx, int dy) {
+		this.x += dx;
+		this.y += dy;
 	}
 
 	@Override
