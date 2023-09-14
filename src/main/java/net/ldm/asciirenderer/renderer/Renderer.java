@@ -5,6 +5,8 @@ import net.ldm.asciirenderer.UI;
 import net.ldm.asciirenderer.core.Vector2;
 import net.ldm.asciirenderer.core.exception.PixelOutOfBoundsException;
 
+import java.io.IOException;
+
 public class Renderer {
 	protected static final char[] BRIGHTNESS_SCALE = {
 			'\u00a0', '\'', '.', '`', '^', '"', ',', ':', ';', 'I', 'l', '!', 'i', '>', '<', '~', '+', '_', '-', '?', ']',
@@ -17,8 +19,8 @@ public class Renderer {
 		StringBuilder result = new StringBuilder();
 		result.append("<html>");
 
-		for (int y = -screen.size().height + 1; y < screen.size().height + 1; y++) {
-			for (int x = -screen.size().width; x < screen.size().width; x++) {
+		for (int y = 0; y < screen.height(); y++) {
+			for (int x = 0; x < screen.width(); x++) {
 				result.append(screen.getPixelAt(new Vector2(x, y)).toAscii());
 			}
 			result.append("<br>");
@@ -32,11 +34,8 @@ public class Renderer {
 	public static void update(Screen screen) throws InterruptedException {
 		screen.clear();
 		try {
-			for (int x = -screen.size().width; x < screen.size().width; x++) {
-				screen.drawVerticalLine(new Vector2(x, 5), -10, Pixel.FULL);
-			}
-
-		} catch (PixelOutOfBoundsException e) {
+			screen.drawImage(Main.class.getResource("/images/demo/apple.png"));
+		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
 		UI.set(renderScreen(screen));
