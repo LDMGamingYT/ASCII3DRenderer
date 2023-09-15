@@ -9,6 +9,7 @@ public class Main {
     public static final int FRAME_RATE = 1;
 
     public static void main(String[] args) {
+        System.out.println(UI.chooseFile());
         UI.initialize();
 
         Screen screen = new Screen(136, 32);
